@@ -1,0 +1,54 @@
+[user]
+	name = Pine, Mark
+	email = Mark.Pine@ingramcontent.com
+[push]
+	default = simple
+[diff]
+    tool = winmerge
+[difftool "winmerge"]
+    cmd = "'C:/Program Files (x86)/WinMerge/WinMergeU.exe'" -e "$LOCAL" "$REMOTE"
+
+[merge]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	cmd = \"c:\\\\Program Files\\\\KDiff3\\\\kdiff3\" $BASE $LOCAL $REMOTE -o $MERGED
+[alias]
+	ll = log --pretty=format:"%C(yellow)%h%C(green)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate
+	lg = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(cyan)- %an, %ar%C(reset)'
+	lh = log --stat --abbrev-commit -n
+	lrbh = ls-remote --heads origin
+	b = branch -a
+	bd = branch -d
+	bdf = branch -D
+	ba = checkout -b
+	bdr = push origin --delete
+	s = status
+	a = add -A
+    st = status -s
+	cl = clone
+	ci = commit
+    cm = commit -m
+    cma = commit -a -m
+	cfg = config --global
+	p = pull
+	co = checkout
+	dlc = diff --cached HEAD^
+    #stash
+    sl = stash list
+    ss = stash save
+	sp = stash pop
+	#reset commands
+    r = reset
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    rh = reset --hard
+    rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
+	la = !git config -l | grep alias | cut -c 7-
+	cor = "!f() { git remote update && git fetch && git checkout -b $@ origin/$@; }; f"
+[mergetool]
+	keepBackup = false
+[difftool]
+	prompt = false
+[core]
+	autocrlf = true
